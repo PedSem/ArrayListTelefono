@@ -20,10 +20,12 @@ public class TelefonoMovil {
 
     public boolean addNewContact(Contacto contacto){
         int index=findContact(contacto);
-        if(index>=0){
-            return myContacts.add(contacto);
+        if(index==-1){
+             myContacts.add(contacto);
+             return true;
         }else{
-            return index==-1;
+            System.out.println("El contacto ya existe");
+            return false;
         }
 
     }
@@ -47,12 +49,12 @@ public class TelefonoMovil {
         }
     }
     public int findContact(Contacto contacto){
-        int index=myContacts.indexOf(contacto);
-        if(index>=0){
-            return index;
-        }else{
-            return -1;
+        for(int i=0;i<myContacts.size();i++){
+            if(myContacts.get(i).getName().equals(contacto.getName())){
+                return i;
+            }
         }
+        return -1;
 
     }
     public int findContact(String nombre) {

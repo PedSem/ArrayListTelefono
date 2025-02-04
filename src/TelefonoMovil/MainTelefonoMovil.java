@@ -36,7 +36,7 @@ public class MainTelefonoMovil {
                     String numerotelefono="";
                     try{
                         System.out.print("Introduce tu nombre:");
-                         nombre= scanner.next();
+                         nombre= scanner.nextLine();
                     }catch (NumberFormatException e){
                         System.out.println("Error.Solo se permiten caracteres");
                         scanner.nextLine();
@@ -44,15 +44,22 @@ public class MainTelefonoMovil {
                     }
                     try{
                         System.out.print("Introduce tu numero de telefono:");
-                        numerotelefono= scanner.next();
+                        numerotelefono= scanner.nextLine();
                     }catch (InputMismatchException e){
                         System.out.println("Solo se permiten numeros");
                         scanner.nextLine();
                         continuar=false;
                     }
-                    Contacto contacto=new Contacto(nombre,numerotelefono);
-                    telefonoMovil.addNewContact(contacto);
-                    System.out.println("Introducido con éxito");
+                    if(continuar){
+                        Contacto contacto=Contacto.createContact(nombre,numerotelefono);
+                        boolean resultado=telefonoMovil.addNewContact(contacto);
+                        if(resultado){
+                            System.out.println("Contacto añadido con éxito");
+                        }else{
+                            System.out.println("No se pudo añadir el contacto");
+                        }
+                        System.out.println("Introducido con éxito");
+                    }
                     break;
                 case 6:
                     imprimirmenu();
