@@ -48,7 +48,7 @@ public class TelefonoMovil {
             return false;
         }
     }
-    public int findContact(Contacto contacto){
+    private int findContact(Contacto contacto){
         for(int i=0;i<myContacts.size();i++){
             if(myContacts.get(i).getName().equals(contacto.getName())){
                 return i;
@@ -57,14 +57,13 @@ public class TelefonoMovil {
         return -1;
 
     }
-    public int findContact(String nombre) {
-
-        int index = myContacts.indexOf(nombre);
-        if (index >= 0) {
-            return index;
-        } else {
-            return -1;
+    private int findContact(String nombre) {
+        for(int i=0;i<myContacts.size();i++){
+            if(myContacts.get(i).getName().equals(nombre)){
+                return i;
+            }
         }
+        return -1;
     }
     public Contacto queryContact(String nombre){
         int index=findContact(nombre);
@@ -83,7 +82,7 @@ public class TelefonoMovil {
         System.out.println("Tenemos " + myContacts.size() + " elementos en el arrayList");
         for(int i=0;i<myContacts.size();i++){
             System.out.print((i+1) + ". ");
-            System.out.println(myContacts.get(i));
+            System.out.println(myContacts.get(i).getName() + " -> " + myContacts.get(i).getPhoneNumber());
         }
     }
 }

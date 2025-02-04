@@ -8,6 +8,8 @@ public class MainTelefonoMovil {
     public static void main(String[] args) {
         Scanner scanner=new Scanner(System.in);
         boolean continuar=true;
+        String nombre="";
+        String numerotelefono="";
         int opcion=0;
         do{
             imprimirmenu();
@@ -32,35 +34,52 @@ public class MainTelefonoMovil {
                     telefonoMovil.printContacts();
                     break;
                 case 2:
-                    String nombre="";
-                    String numerotelefono="";
-                    try{
-                        System.out.print("Introduce tu nombre:");
-                         nombre= scanner.nextLine();
-                    }catch (NumberFormatException e){
-                        System.out.println("Error.Solo se permiten caracteres");
-                        scanner.nextLine();
-                        continuar=false;
-                    }
-                    try{
-                        System.out.print("Introduce tu numero de telefono:");
-                        numerotelefono= scanner.nextLine();
-                    }catch (InputMismatchException e){
-                        System.out.println("Solo se permiten numeros");
-                        scanner.nextLine();
-                        continuar=false;
-                    }
-                    if(continuar){
-                        Contacto contacto=Contacto.createContact(nombre,numerotelefono);
-                        boolean resultado=telefonoMovil.addNewContact(contacto);
-                        if(resultado){
-                            System.out.println("Contacto añadido con éxito");
-                        }else{
-                            System.out.println("No se pudo añadir el contacto");
+                        try{
+                            System.out.print("Introduce tu nombre:");
+                            nombre= scanner.nextLine();
+                            continuar=false;
+                        }catch (NumberFormatException e){
+                            System.out.println("Error.Solo se permiten caracteres");
+                            scanner.nextLine();
                         }
-                        System.out.println("Introducido con éxito");
+                        try{
+                            System.out.print("Introduce tu numero de telefono:");
+                            numerotelefono= scanner.nextLine();
+                            if(numerotelefono.length()!=1){
+                                System.out.println("Error.Introduce un numero valido");
+                                continuar=false;
+                            }
+                        }catch (InputMismatchException e){
+                            System.out.println("Solo se permiten numeros");
+                            scanner.nextLine();
+                        }
+                        if(continuar){
+                            Contacto contacto=Contacto.createContact(nombre,numerotelefono);
+                            boolean resultado=telefonoMovil.addNewContact(contacto);
+                            if(resultado){
+                                System.out.println("Contacto añadido con éxito");
+                            }else{
+                                System.out.println("No se pudo añadir el contacto");
+                            }
+                        }
+                    break;
+                case 3:
+                    System.out.print("Introduce el nombre");
+                    nombre= scanner.next();
+                    Contacto contacto=telefonoMovil.queryContact(nombre);
+                    System.out.print("Introduce el nuevo nombre:");
+                    String nuevonombre= scanner.next();
+                    System.out.println("Introduce el nuevo numero de telefono");
+                    String nuevonumerotelefono= scanner.next();
+                    Contacto contacto1=new Contacto(nuevonombre,nuevonumerotelefono);
+                    boolean resultado=telefonoMovil.updateContact(contacto,contacto1);
+                    if(resultado){
+                        System.out.println("Contacto modificado correctamente");
+                    }else{
+                        System.out.println("Error.El contacto no existe");
                     }
                     break;
+
                 case 6:
                     imprimirmenu();
                     break;
