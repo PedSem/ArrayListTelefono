@@ -27,7 +27,7 @@ public class MainTelefonoMovil {
             }
             switch (opcion){
                 case 0:
-                    System.out.println("Hasta luego");
+                    System.out.println("Has salido con exito");
                     continuar=false;
                     break;
                 case 1:
@@ -100,9 +100,9 @@ public class MainTelefonoMovil {
                     nombre= scanner.next();
                     Contacto contactoencontrar=telefonoMovil.queryContact(nombre);
                     if(contactoencontrar!=null){
-                        telefonoMovil.printContacts();
+                        System.out.println(contactoencontrar.getName() + " -> " + contactoencontrar.getPhoneNumber());
                     }else{
-                        System.out.println("El contacto no existe");
+                        System.out.println("No se encontro el contacto");
                     }
                     break;
                 case 6:
