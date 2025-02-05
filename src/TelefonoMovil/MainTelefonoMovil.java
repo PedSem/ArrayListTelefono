@@ -37,17 +37,18 @@ public class MainTelefonoMovil {
                         try{
                             System.out.print("Introduce tu nombre:");
                             nombre= scanner.nextLine();
-                            continuar=false;
                         }catch (NumberFormatException e){
                             System.out.println("Error.Solo se permiten caracteres");
                             scanner.nextLine();
+                            continuar=false;
                         }
                         try{
                             System.out.print("Introduce tu numero de telefono:");
                             numerotelefono= scanner.nextLine();
-                            if(numerotelefono.length()!=1){
+                            while (numerotelefono.length()!=9){
                                 System.out.println("Error.Introduce un numero valido");
-                                continuar=false;
+                                continuar=true;
+                                numerotelefono=scanner.nextLine();
                             }
                         }catch (InputMismatchException e){
                             System.out.println("Solo se permiten numeros");
@@ -66,20 +67,44 @@ public class MainTelefonoMovil {
                 case 3:
                     System.out.print("Introduce el nombre");
                     nombre= scanner.next();
-                    Contacto contacto=telefonoMovil.queryContact(nombre);
-                    System.out.print("Introduce el nuevo nombre:");
-                    String nuevonombre= scanner.next();
-                    System.out.println("Introduce el nuevo numero de telefono");
-                    String nuevonumerotelefono= scanner.next();
-                    Contacto contacto1=new Contacto(nuevonombre,nuevonumerotelefono);
-                    boolean resultado=telefonoMovil.updateContact(contacto,contacto1);
-                    if(resultado){
-                        System.out.println("Contacto modificado correctamente");
-                    }else{
-                        System.out.println("Error.El contacto no existe");
+                    Contacto contactoviejo=telefonoMovil.queryContact(nombre);
+                    if(contactoviejo!=null){
+                        System.out.print("Introduce el nuevo nombre:");
+                        String nuevonombre= scanner.next();
+                        System.out.println("Introduce el nuevo numero de telefono");
+                        String nuevonumerotelefono= scanner.next();
+                        Contacto contactonuevo=Contacto.createContact(nuevonombre,nuevonumerotelefono);
+                        boolean resultado= telefonoMovil.updateContact(contactoviejo,contactonuevo);
+                        if(resultado){
+                            System.out.println("El Contacto se ha modificado correctamente");
+                        }else{
+                            System.out.println("El contacto ya existe");
+                        }
                     }
                     break;
-
+                case 4:
+                    System.out.println("Introduce el nombre");
+                    nombre= scanner.next();
+                    Contacto contacto=telefonoMovil.queryContact(nombre);
+                    if(contacto!=null){
+                        boolean resultadoremover=telefonoMovil.removeContact(contacto);
+                        if(resultadoremover){
+                            System.out.println("Se ha eliminado correctamente");
+                        }else{
+                            System.out.println("El contacto no existe");
+                        }
+                    }
+                    break;
+                case 5:
+                    System.out.print("Introduce el nombre:");
+                    nombre= scanner.next();
+                    Contacto contactoencontrar=telefonoMovil.queryContact(nombre);
+                    if(contactoencontrar!=null){
+                        telefonoMovil.printContacts();
+                    }else{
+                        System.out.println("El contacto no existe");
+                    }
+                    break;
                 case 6:
                     imprimirmenu();
                     break;

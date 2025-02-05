@@ -38,6 +38,9 @@ public class TelefonoMovil {
         }else{
             return false;
         }
+
+
+
     }
     public boolean removeContact(Contacto contacto){
         int index=findContact(contacto);
@@ -50,7 +53,7 @@ public class TelefonoMovil {
     }
     private int findContact(Contacto contacto){
         for(int i=0;i<myContacts.size();i++){
-            if(myContacts.get(i).getName().equals(contacto.getName())){
+            if(myContacts.get(i).getName().equals(contacto.getName()) && myContacts.get(i).getPhoneNumber().equals(contacto.getPhoneNumber())){
                 return i;
             }
         }
