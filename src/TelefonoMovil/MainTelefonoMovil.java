@@ -99,9 +99,9 @@ public class MainTelefonoMovil {
                                 System.out.println("Error.Solo se permiten caracteres");
                             }
                         }while (!continuar);
-                        continuar=false;
                         Contacto contactoviejo=telefonoMovil.queryContact(nombre);
                         if(contactoviejo!=null){
+                            continuar=false;
                             do{
                                 try{
                                     System.out.print("Introduce el nuevo nombre:");
@@ -147,7 +147,6 @@ public class MainTelefonoMovil {
                         }else{
                             System.out.println("No se encontro el contacto");
                         }
-
                     break;
                 case 4:
                     do{

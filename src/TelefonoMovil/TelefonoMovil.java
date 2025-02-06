@@ -7,7 +7,7 @@ public class TelefonoMovil {
     private ArrayList<Contacto>myContacts=new ArrayList<>();
     public TelefonoMovil(String myNumber) {
         this.myNumber = myNumber;
-        myContacts=new ArrayList<>();
+        this.myContacts=new ArrayList<>();
     }
 
     public String getMyNumber() {
@@ -31,10 +31,9 @@ public class TelefonoMovil {
     }
     public boolean updateContact(Contacto contactoantiguo,Contacto contactonuevo){
         int index=findContact(contactoantiguo);
-        if(index!=-1 &&  findContact(contactonuevo)==-1){
+        if(index>=0){
              myContacts.set(index,contactonuevo);
              return true;
-
         }else{
             return false;
         }
@@ -52,12 +51,8 @@ public class TelefonoMovil {
         }
     }
     private int findContact(Contacto contacto){
-        for(int i=0;i<myContacts.size();i++){
-            if(myContacts.get(i).getName().equals(contacto.getName()) && myContacts.get(i).getPhoneNumber().equals(contacto.getPhoneNumber())){
-                return i;
-            }
-        }
-        return -1;
+        int index=this.myContacts.indexOf(contacto);
+        return index;
 
     }
     private int findContact(String nombre) {
@@ -70,7 +65,7 @@ public class TelefonoMovil {
     }
     public Contacto queryContact(String nombre){
         int index=findContact(nombre);
-        if(index>=0){
+        if(index==-1){
             return myContacts.get(index);
         }else{
             return null;
