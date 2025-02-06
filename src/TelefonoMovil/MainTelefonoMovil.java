@@ -80,7 +80,6 @@ public class MainTelefonoMovil {
                 case 3:
                     String nuevonombre="";
                     String nuevonumerotelefono="";
-                    boolean encontrarcontacto=false;
                         do{
                             try{
                                 System.out.print("Introduce tu nombre:");
