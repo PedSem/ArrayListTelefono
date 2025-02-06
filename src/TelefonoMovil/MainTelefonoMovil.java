@@ -7,7 +7,7 @@ public class MainTelefonoMovil {
 
     public static void main(String[] args) {
         Scanner scanner=new Scanner(System.in);
-        boolean continuar=true;
+        boolean continuar=false;
         String nombre="";
         String numerotelefono="";
         int opcion=0;
@@ -34,14 +34,26 @@ public class MainTelefonoMovil {
                     telefonoMovil.printContacts();
                     break;
                 case 2:
+                    do{
                         try{
                             System.out.print("Introduce tu nombre:");
                             nombre= scanner.nextLine();
+                            boolean esvalido=true;
+                            for(int i=0;i<nombre.length();i++){
+                                if(!Character.isLetter(nombre.charAt(i))){
+                                    esvalido=false;
+                                }
+                            }
+                            if(esvalido){
+                                continuar=true;
+                            }else{
+                                System.out.println("Error.Solo se permiten caracteres");
+                            }
                         }catch (NumberFormatException e){
                             System.out.println("Error.Solo se permiten caracteres");
-                            scanner.nextLine();
-                            continuar=false;
                         }
+                    }while (!continuar);
+                    continuar=false;
                         try{
                             System.out.print("Introduce tu numero de telefono:");
                             numerotelefono= scanner.nextLine();
