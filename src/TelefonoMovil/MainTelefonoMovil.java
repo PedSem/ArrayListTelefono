@@ -53,20 +53,22 @@ public class MainTelefonoMovil {
                             System.out.println("Error.Solo se permiten caracteres");
                         }
                     }while (!continuar);
+
                     continuar=false;
+                    do{
                         try{
                             System.out.print("Introduce tu numero de telefono:");
                             numerotelefono= scanner.nextLine();
-                            while (numerotelefono.length()!=9){
-                                System.out.println("Error.Introduce un numero valido");
+                            if (numerotelefono.length()==9){
                                 continuar=true;
-                                numerotelefono=scanner.nextLine();
+                            }else{
+                                System.out.println("Error.Introduce un numero valido");
                             }
                         }catch (InputMismatchException e){
                             System.out.println("Solo se permiten numeros");
                             scanner.nextLine();
                         }
-                        if(continuar){
+                    }while (!continuar);
                             Contacto contacto=Contacto.createContact(nombre,numerotelefono);
                             boolean resultado=telefonoMovil.addNewContact(contacto);
                             if(resultado){
@@ -74,32 +76,103 @@ public class MainTelefonoMovil {
                             }else{
                                 System.out.println("No se pudo añadir el contacto");
                             }
-                        }
                     break;
                 case 3:
-                    System.out.print("Introduce el nombre");
-                    nombre= scanner.next();
-                    Contacto contactoviejo=telefonoMovil.queryContact(nombre);
-                    if(contactoviejo!=null){
-                        System.out.print("Introduce el nuevo nombre:");
-                        String nuevonombre= scanner.next();
-                        System.out.println("Introduce el nuevo numero de telefono");
-                        String nuevonumerotelefono= scanner.next();
-                        Contacto contactonuevo=Contacto.createContact(nuevonombre,nuevonumerotelefono);
-                        boolean resultado= telefonoMovil.updateContact(contactoviejo,contactonuevo);
-                        if(resultado){
-                            System.out.println("El Contacto se ha modificado correctamente");
+                    String nuevonombre="";
+                    String nuevonumerotelefono="";
+                    boolean encontrarcontacto=false;
+                        do{
+                            try{
+                                System.out.print("Introduce tu nombre:");
+                                nombre= scanner.nextLine();
+                                boolean esvalido=true;
+                                for(int i=0;i<nombre.length();i++){
+                                    if(!Character.isLetter(nombre.charAt(i))){
+                                        esvalido=false;
+                                    }
+                                }
+                                if(esvalido){
+                                    continuar=true;
+                                }else{
+                                    System.out.println("Error.Solo se permiten caracteres");
+                                }
+                            }catch (NumberFormatException e){
+                                System.out.println("Error.Solo se permiten caracteres");
+                            }
+                        }while (!continuar);
+                        continuar=false;
+                        Contacto contactoviejo=telefonoMovil.queryContact(nombre);
+                        if(contactoviejo!=null){
+                            do{
+                                try{
+                                    System.out.print("Introduce el nuevo nombre:");
+                                    nuevonombre= scanner.nextLine();
+                                    boolean esvalido=true;
+                                    for(int i=0;i<nuevonombre.length();i++){
+                                        if(!Character.isLetter(nuevonombre.charAt(i))){
+                                            esvalido=false;
+                                        }
+                                    }
+                                    if(esvalido){
+                                        continuar=true;
+                                    }else{
+                                        System.out.println("Error.Solo se permiten caracteres");
+                                    }
+                                }catch (NumberFormatException e){
+                                    System.out.println("Error.Solo se permiten caracteres");
+                                }
+                            }while (!continuar);
+                            continuar=false;
+                            do{
+                                try{
+                                    System.out.print("Introduce el nuevo numero de telefono:");
+                                    nuevonumerotelefono= scanner.nextLine();
+                                    if (nuevonumerotelefono.length()==9){
+                                        continuar=true;
+                                    }else{
+                                        System.out.println("Error.Introduce un numero valido");
+                                    }
+                                }catch (InputMismatchException e){
+                                    System.out.println("Solo se permiten numeros");
+                                    scanner.nextLine();
+                                }
+                            }while (!continuar);
+                            Contacto contactonuevo=Contacto.createContact(nuevonombre,nuevonumerotelefono);
+                            boolean resultadonuevo= telefonoMovil.updateContact(contactoviejo,contactonuevo);
+                            if(resultadonuevo){
+                                System.out.println("El Contacto se ha modificado correctamente");
+                            }else{
+                                System.out.println("El contacto ya existe");
+
+                            }
                         }else{
-                            System.out.println("El contacto ya existe");
+                            System.out.println("No se encontro el contacto");
                         }
-                    }
+
                     break;
                 case 4:
-                    System.out.println("Introduce el nombre");
-                    nombre= scanner.next();
-                    Contacto contacto=telefonoMovil.queryContact(nombre);
-                    if(contacto!=null){
-                        boolean resultadoremover=telefonoMovil.removeContact(contacto);
+                    do{
+                        try{
+                            System.out.print("Introduce tu nombre:");
+                            nombre= scanner.nextLine();
+                            boolean esvalido=true;
+                            for(int i=0;i<nombre.length();i++){
+                                if(!Character.isLetter(nombre.charAt(i))){
+                                    esvalido=false;
+                                }
+                            }
+                            if(esvalido){
+                                continuar=true;
+                            }else{
+                                System.out.println("Error.Solo se permiten caracteres");
+                            }
+                        }catch (NumberFormatException e){
+                            System.out.println("Error.Solo se permiten caracteres");
+                        }
+                    }while (!continuar);
+                    Contacto removercontacto=telefonoMovil.queryContact(nombre);
+                    if(removercontacto!=null){
+                        boolean resultadoremover=telefonoMovil.removeContact(removercontacto);
                         if(resultadoremover){
                             System.out.println("Se ha eliminado correctamente");
                         }else{
@@ -108,11 +181,28 @@ public class MainTelefonoMovil {
                     }
                     break;
                 case 5:
-                    System.out.print("Introduce el nombre:");
-                    nombre= scanner.next();
+                    do{
+                        try{
+                            System.out.print("Introduce tu nombre:");
+                            nombre= scanner.nextLine();
+                            boolean esvalido=true;
+                            for(int i=0;i<nombre.length();i++){
+                                if(!Character.isLetter(nombre.charAt(i))){
+                                    esvalido=false;
+                                }
+                            }
+                            if(esvalido){
+                                continuar=true;
+                            }else{
+                                System.out.println("Error.Solo se permiten caracteres");
+                            }
+                        }catch (NumberFormatException e){
+                            System.out.println("Error.Solo se permiten caracteres");
+                        }
+                    }while (!continuar);
                     Contacto contactoencontrar=telefonoMovil.queryContact(nombre);
                     if(contactoencontrar!=null){
-                        System.out.println(contactoencontrar.getName() + " -> " + contactoencontrar.getPhoneNumber());
+                        System.out.println("Contacto encontrado " + contactoencontrar.getName() + " -> " + contactoencontrar.getPhoneNumber());
                     }else{
                         System.out.println("No se encontro el contacto");
                     }

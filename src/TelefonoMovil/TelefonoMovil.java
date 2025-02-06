@@ -31,7 +31,7 @@ public class TelefonoMovil {
     }
     public boolean updateContact(Contacto contactoantiguo,Contacto contactonuevo){
         int index=findContact(contactoantiguo);
-        if(index>=0){
+        if(index!=-1 &&  findContact(contactonuevo)==-1){
              myContacts.set(index,contactonuevo);
              return true;
 
