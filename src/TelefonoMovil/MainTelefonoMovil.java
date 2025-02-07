@@ -16,10 +16,10 @@ public class MainTelefonoMovil {
                 System.out.print("Escoge una opcion:");
                 opcion= scanner.nextInt();
                 scanner.nextLine();
-                if(opcion>0 && opcion<7){
+                if(opcion>=0 && opcion<7){
                     continuar=true;
                 }else{
-                    System.out.println("Error.Introduce una opcion valida");
+                    System.out.println("Introduce una opcion valida");
                 }
             }catch (InputMismatchException e){
                 System.out.println("Error.Debes introducir numeros");
@@ -71,7 +71,7 @@ public class MainTelefonoMovil {
         do{
             try{
                 System.out.print("Introduce tu nombre:");
-                nombre= scanner.nextLine();
+                nombre= scanner.next();
                 boolean esvalido=true;
                 for(int i=0;i<nombre.length();i++){
                     if(!Character.isLetter(nombre.charAt(i))){
@@ -92,11 +92,11 @@ public class MainTelefonoMovil {
         do{
             try{
                 System.out.print("Introduce tu numero de telefono:");
-                numerotelefono= scanner.nextLine();
+                numerotelefono= String.valueOf(scanner.nextInt());
                 if (numerotelefono.length()==9){
                     continuar=true;
                 }else{
-                    System.out.println("Error.Introduce un numero valido");
+                    System.out.println("Error.Introduce una longitud de 9 numeros");
                 }
             }catch (InputMismatchException e){
                 System.out.println("Solo se permiten numeros");
@@ -107,7 +107,6 @@ public class MainTelefonoMovil {
         boolean resultado=telefonoMovil.addNewContact(contacto);
         if(resultado){
             System.out.println("Contacto añadido con éxito");
-
         }else{
             System.out.println("No se pudo añadir el contacto");
         }
@@ -121,7 +120,7 @@ public class MainTelefonoMovil {
         do{
             try{
                 System.out.print("Introduce tu nombre:");
-                nombre= scanner.nextLine();
+                nombre= scanner.next();
                 boolean esvalido=true;
                 for(int i=0;i<nombre.length();i++){
                     if(!Character.isLetter(nombre.charAt(i))){
@@ -143,7 +142,7 @@ public class MainTelefonoMovil {
             do{
                 try{
                     System.out.print("Introduce el nuevo nombre:");
-                    nuevonombre= scanner.nextLine();
+                    nuevonombre= scanner.next();
                     boolean esvalido=true;
                     for(int i=0;i<nuevonombre.length();i++){
                         if(!Character.isLetter(nuevonombre.charAt(i))){
@@ -163,7 +162,7 @@ public class MainTelefonoMovil {
             do{
                 try{
                     System.out.print("Introduce el nuevo numero de telefono:");
-                    nuevonumerotelefono= scanner.nextLine();
+                    nuevonumerotelefono= String.valueOf(scanner.nextInt());
                     if (nuevonumerotelefono.length()==9){
                         continuar=true;
                     }else{
@@ -193,7 +192,7 @@ public class MainTelefonoMovil {
         do{
             try{
                 System.out.print("Introduce tu nombre:");
-                nombre= scanner.nextLine();
+                nombre= scanner.next();
                 boolean esvalido=true;
                 for(int i=0;i<nombre.length();i++){
                     if(!Character.isLetter(nombre.charAt(i))){
@@ -228,7 +227,7 @@ public class MainTelefonoMovil {
         do{
             try{
                 System.out.print("Introduce tu nombre:");
-                nombre= scanner.nextLine();
+                nombre= scanner.next();
                 boolean esvalido=true;
                 for(int i=0;i<nombre.length();i++){
                     if(!Character.isLetter(nombre.charAt(i))){

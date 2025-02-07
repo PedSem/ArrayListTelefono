@@ -32,10 +32,10 @@ public class TelefonoMovil {
     public boolean updateContact(Contacto contactoantiguo,Contacto contactonuevo){
         int index=findContact(contactoantiguo);
         if(index==-1){
-             this.myContacts.set(index,contactonuevo);
-             return true;
-        }else{
             return false;
+        }else{
+            this.myContacts.set(index,contactonuevo);
+            return true;
         }
 
 
