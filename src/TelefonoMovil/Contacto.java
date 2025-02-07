@@ -1,8 +1,9 @@
 package TelefonoMovil;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Contacto {
+public class Contacto implements Comparable<Contacto> {
     private String name;
     private String phoneNumber;
 
@@ -33,5 +34,20 @@ public class Contacto {
     @Override
     public int hashCode() {
         return Objects.hash(name, phoneNumber);
+    }
+    @Override
+    public int compareTo(Contacto c1){
+        return this.name.compareTo(c1.name);
+
+
+
+    }
+
+    @Override
+    public String toString() {
+        return "Contacto{" +
+                "name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
 }

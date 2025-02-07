@@ -2,6 +2,8 @@ package TelefonoMovil;
 
 import javax.print.DocFlavor;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 
 public class TelefonoMovil {
     private String myNumber;
@@ -103,5 +105,60 @@ public class TelefonoMovil {
             System.out.print((i+1) + ". ");
             System.out.println(myContacts.get(i).getName() + " -> " + myContacts.get(i).getPhoneNumber());
         }
+    }
+    public  void OrdenarNombre(){
+        Collections.sort(myContacts);
+        System.out.println("Nombres Ordenados");
+        for(Contacto contacto:myContacts){
+            System.out.println(contacto.getName());
+        }
+    }
+    public void Eliminartodo(){
+        myContacts.clear();
+        System.out.println("Eliminado con éxito");
+    }
+    public void numerocontactos(){
+        int contarcontactos=0;
+        for(int i=0;i<myContacts.size();i++){
+            while (contarcontactos<myContacts.size()){
+                contarcontactos++;
+            }
+
+        }
+        System.out.println("Hay " + contarcontactos + " contactos");
+    }
+    public void Encontrarclave(){
+        Scanner scanner=new Scanner(System.in);
+        boolean continuar=false;
+        do{
+            try{
+                System.out.println("Introduce la clave que quieres obtener");
+                String clave= scanner.nextLine().toLowerCase();
+                boolean esvalido=true;
+                for(int i=0;i<clave.length();i++){
+                    if(!Character.isLetter(clave.charAt(i))){
+                        esvalido=false;
+                    }
+                }
+                if(esvalido){
+                    continuar=true;
+                }else{
+                    System.out.println("Error.Solo se permiten caracteres");
+                }
+                for(Contacto contacto:myContacts){
+                    if(contacto.getName().equalsIgnoreCase(clave)){
+                        System.out.println(contacto);
+                        continuar=true;
+                    }
+                    if(!continuar){
+                        System.out.println("Introduce una clave valida");
+                    }
+                }
+            }catch (NumberFormatException e){
+                System.out.println("Error.Pon solo caracteres");
+            }
+        }while (!continuar);
+
+
     }
 }

@@ -1,4 +1,7 @@
 package TelefonoMovil;
+import java.time.Period;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -51,9 +54,21 @@ public class MainTelefonoMovil {
                 case 7:
                     EncontrarContactoTelefono();
                     break;
+                case 8:
+                    telefonoMovil.OrdenarNombre();
+                    break;
+                case 9:
+                    telefonoMovil.Eliminartodo();
+                    break;
+                case 10:
+                    telefonoMovil.numerocontactos();
+                    break;
+                case 11:
+                    telefonoMovil.Encontrarclave();
+                    break;
             }
 
-        }while ((opcion<0 || opcion>7) || continuar);
+        }while ((opcion<0 || opcion>12) || continuar);
     }
     public static void imprimirmenu(){
         System.out.println("0-Salir");
@@ -64,6 +79,10 @@ public class MainTelefonoMovil {
         System.out.println("5- Encontrar nombre del contacto");
         System.out.println("6- Imprimir menu");
         System.out.println("7-Encontrar numero de telefono del contacto");
+        System.out.println("8-Ordenar Nombre");
+        System.out.println("9-Eliminar todos los contactos");
+        System.out.println("10-Contar contactos");
+        System.out.println("11-Buscar por clave");
     }
     public static void AnyadirConacto(){
         String nombre="";
@@ -252,11 +271,6 @@ public class MainTelefonoMovil {
         }
 
     }
-    //7.Busqueda por telefono
-    //8.Ordenar por nombre
-    //9.Borrar todo
-    //10.Numero de contactos
-    //11.Busqueda por clave
     public static void EncontrarContactoTelefono(){
         String numerotelefono="";
         boolean continuar=false;
