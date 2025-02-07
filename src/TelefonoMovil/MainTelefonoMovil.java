@@ -9,8 +9,6 @@ public class MainTelefonoMovil {
     public static void main(String[] args) {
         Scanner scanner=new Scanner(System.in);
         boolean continuar=true;
-        String nombre="";
-        String numerotelefono="";
         int opcion=0;
         do{
             imprimirmenu();
