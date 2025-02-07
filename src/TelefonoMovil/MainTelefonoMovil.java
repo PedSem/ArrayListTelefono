@@ -67,7 +67,7 @@ public class MainTelefonoMovil {
         boolean continuar=false;
         do{
             try{
-                System.out.print("Introduce tu nombre:");
+                System.out.print("Introduce el nombre que quieres añadir:");
                 nombre= scanner.next();
                 boolean esvalido=true;
                 for(int i=0;i<nombre.length();i++){
@@ -88,7 +88,7 @@ public class MainTelefonoMovil {
         continuar=false;
         do{
             try{
-                System.out.print("Introduce tu numero de telefono:");
+                System.out.print("Introduce el numero de telefono que quieres añadir:");
                 numerotelefono= String.valueOf(scanner.nextInt());
                 if (numerotelefono.length()==9){
                     continuar=true;
@@ -116,7 +116,7 @@ public class MainTelefonoMovil {
         boolean continuar=false;
         do{
             try{
-                System.out.print("Introduce tu nombre:");
+                System.out.print("Introduce el nombre que deseas actualizar:");
                 nombre= scanner.next();
                 boolean esvalido=true;
                 for(int i=0;i<nombre.length();i++){
@@ -188,7 +188,7 @@ public class MainTelefonoMovil {
         boolean continuar=false;
         do{
             try{
-                System.out.print("Introduce tu nombre:");
+                System.out.print("Introduce el nombre del contacto que quieres eliminar:");
                 nombre= scanner.next();
                 boolean esvalido=true;
                 for(int i=0;i<nombre.length();i++){
@@ -223,7 +223,7 @@ public class MainTelefonoMovil {
         boolean continuar=false;
         do{
             try{
-                System.out.print("Introduce tu nombre:");
+                System.out.print("Introduce el nombre del contacto que deseas buscar:");
                 nombre= scanner.next();
                 boolean esvalido=true;
                 for(int i=0;i<nombre.length();i++){
@@ -248,7 +248,5 @@ public class MainTelefonoMovil {
         }
 
     }
-
-
 }
 
