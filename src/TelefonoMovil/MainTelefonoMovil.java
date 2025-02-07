@@ -11,7 +11,6 @@ public class MainTelefonoMovil {
         boolean continuar=false;
         int opcion=0;
         do{
-            imprimirmenu();
             try{
                 System.out.print("Escoge una opcion:");
                 opcion= scanner.nextInt();
