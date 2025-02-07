@@ -21,10 +21,9 @@ public class TelefonoMovil {
     public boolean addNewContact(Contacto contacto){
         int index=findContact(contacto);
         if(index==-1){
-             myContacts.add(contacto);
-             return true;
+            this.myContacts.add(contacto);
+            return true;
         }else{
-            System.out.println("El contacto ya existe");
             return false;
         }
 
@@ -32,7 +31,7 @@ public class TelefonoMovil {
     public boolean updateContact(Contacto contactoantiguo,Contacto contactonuevo){
         int index=findContact(contactoantiguo);
         if(index>=0){
-             myContacts.set(index,contactonuevo);
+             this.myContacts.set(index,contactonuevo);
              return true;
         }else{
             return false;
@@ -44,7 +43,7 @@ public class TelefonoMovil {
     public boolean removeContact(Contacto contacto){
         int index=findContact(contacto);
         if(index>=0){
-            myContacts.remove(index);
+            this.myContacts.remove(index);
             return true;
         }else{
             return false;
@@ -56,8 +55,8 @@ public class TelefonoMovil {
 
     }
     private int findContact(String nombre) {
-        for(int i=0;i<myContacts.size();i++){
-            if(myContacts.get(i).getName().equals(nombre)){
+        for(int i=0;i<this.myContacts.size();i++){
+            if(this.myContacts.get(i).getName().equals(nombre)){
                 return i;
             }
         }
@@ -65,8 +64,8 @@ public class TelefonoMovil {
     }
     public Contacto queryContact(String nombre){
         int index=findContact(nombre);
-        if(index==-1){
-            return myContacts.get(index);
+        if(index>=0){
+            return this.myContacts.get(index);
         }else{
             return null;
         }
