@@ -169,7 +169,6 @@ public class MainTelefonoMovil {
                     System.out.println("Solo se permiten numeros");
                     scanner.nextLine();
                 }
-
             }while (!continuar);
             Contacto contactonuevo=Contacto.createContact(nuevonombre,nuevonumerotelefono);
             boolean resultadonuevo= telefonoMovil.updateContact(contactoviejo,contactonuevo);
