@@ -61,9 +61,6 @@ public class MainTelefonoMovil {
         System.out.println("5- Encontrar nombre del contacto");
         System.out.println("6- Imprimir menu ");
     }
-    //7.Buscar por telefono
-    //8.Ordenar por nombre
-    //9.Borrar todo
     public static void AnyadirConacto(){
         String nombre="";
         String numerotelefono="";
