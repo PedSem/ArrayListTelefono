@@ -35,7 +35,7 @@ public class Contacto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Contacto contacto = (Contacto) o;
-        return Objects.equals(name, contacto.name) && Objects.equals(phoneNumber, contacto.phoneNumber);
+        return Objects.equals(name, contacto.name);
     }
 
     @Override

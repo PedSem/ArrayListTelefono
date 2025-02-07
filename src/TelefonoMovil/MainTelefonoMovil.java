@@ -8,7 +8,7 @@ public class MainTelefonoMovil {
 
     public static void main(String[] args) {
         Scanner scanner=new Scanner(System.in);
-        boolean continuar=true;
+        boolean continuar=false;
         int opcion=0;
         do{
             imprimirmenu();
@@ -16,9 +16,10 @@ public class MainTelefonoMovil {
                 System.out.print("Escoge una opcion:");
                 opcion= scanner.nextInt();
                 scanner.nextLine();
-                if(opcion<0 || opcion>7){
-                    System.out.println("Introduce una opcion valida");
-                    continuar=false;
+                if(opcion>0 && opcion<7){
+                    continuar=true;
+                }else{
+                    System.out.println("Error.Introduce una opcion valida");
                 }
             }catch (InputMismatchException e){
                 System.out.println("Error.Debes introducir numeros");
@@ -216,6 +217,8 @@ public class MainTelefonoMovil {
             }else{
                 System.out.println("El contacto no existe");
             }
+        }else{
+            System.out.println("El contacto no existe");
         }
 
     }
