@@ -72,11 +72,6 @@ public class TelefonoMovil {
         }else{
             return null;
         }
-
-
-
-
-
     }
     private int findContactTelefono(String numerotelefono){
         for(int i=0;i<this.myContacts.size();i++){
@@ -130,6 +125,7 @@ public class TelefonoMovil {
     public void Encontrarclave(){
         Scanner scanner=new Scanner(System.in);
         boolean continuar=false;
+
         do{
             try{
                 System.out.println("Introduce la clave que quieres obtener");
@@ -141,23 +137,26 @@ public class TelefonoMovil {
                     }
                 }
                 if(esvalido){
-                    continuar=true;
-                }else{
-                    System.out.println("Error.Solo se permiten caracteres");
-                }
-                for(Contacto contacto:myContacts){
-                    if(contacto.getName().equalsIgnoreCase(clave)){
-                        System.out.println(contacto);
-                        continuar=true;
+                    boolean encontrar=false;
+                    for(Contacto contacto:myContacts){
+                        if(contacto.getName().equalsIgnoreCase(clave)){
+                            System.out.println(contacto);
+                            encontrar=true;
+                            continuar=true;
+                        }
                     }
-                    if(!continuar){
+                    if(!encontrar){
                         System.out.println("Introduce una clave valida");
                     }
+                }else{
+                    System.out.println("Error.Solo se permiten caracteres");
                 }
             }catch (NumberFormatException e){
                 System.out.println("Error.Pon solo caracteres");
             }
         }while (!continuar);
+
+
 
 
     }

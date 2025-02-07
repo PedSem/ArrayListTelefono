@@ -64,7 +64,7 @@ public class MainTelefonoMovil {
                     telefonoMovil.numerocontactos();
                     break;
                 case 11:
-                    telefonoMovil.Encontrarclave();
+                    EncontrarClave();
                     break;
             }
 
@@ -294,6 +294,37 @@ public class MainTelefonoMovil {
         }else{
             System.out.println("No se encontro el contacto");
         }
+    }
+    public static void EncontrarClave(){
+        boolean continuar=false;
+        String clave="";
+        do{
+            try{
+                System.out.println("Introduce la clave que quieres obtener");
+                clave= scanner.next();
+                boolean esvalido=true;
+                for(int i=0;i<clave.length();i++){
+                    if(!Character.isLetter(clave.charAt(i))){
+                        esvalido=false;
+                    }
+                }
+                if(esvalido){
+                    continuar=true;
+                }else{
+                    System.out.println("Error.Solo se permiten caracteres");
+                }
+
+            }catch (NumberFormatException e){
+                System.out.println("Error.Pon solo caracteres");
+            }
+        }while (!continuar);
+        Contacto clavecontacto=telefonoMovil.queryContact(clave);
+        if(clavecontacto!=null){
+            System.out.println("Contacto " + clavecontacto.getName() + " -> " + clavecontacto.getPhoneNumber());
+        }else{
+            System.out.println("No se encontro el contacto");
+        }
+
     }
 }
 
