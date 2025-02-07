@@ -1,5 +1,6 @@
 package TelefonoMovil;
 
+import javax.print.DocFlavor;
 import java.util.ArrayList;
 
 public class TelefonoMovil {
@@ -42,11 +43,11 @@ public class TelefonoMovil {
     }
     public boolean removeContact(Contacto contacto){
         int index=findContact(contacto);
-        if(index>=0){
+        if(index==-1){
+            return false;
+        }else{
             this.myContacts.remove(index);
             return true;
-        }else{
-            return false;
         }
     }
     private int findContact(Contacto contacto){
