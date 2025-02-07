@@ -59,7 +59,7 @@ public class MainTelefonoMovil {
         System.out.println("3- Actualizar contacto");
         System.out.println("4- Eliminar contacto");
         System.out.println("5- Encontrar nombre del contacto");
-        System.out.println("6- Imprimir menu ");
+        System.out.println("6- Imprimir menu");
     }
     public static void AnyadirConacto(){
         String nombre="";
