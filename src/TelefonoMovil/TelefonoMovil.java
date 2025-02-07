@@ -74,6 +74,27 @@ public class TelefonoMovil {
 
 
 
+
+    }
+    private int findContactTelefono(String numerotelefono){
+        for(int i=0;i<this.myContacts.size();i++){
+            if(this.myContacts.get(i).getPhoneNumber().equals(numerotelefono)){
+                return i;
+            }
+        }
+        return -1;
+
+
+    }
+    public Contacto queryContactTelefono(String numerotelefono){
+        int index=findContactTelefono(numerotelefono);
+        if(index>=0){
+            return this.myContacts.get(index);
+
+        }else{
+            return null;
+        }
+
     }
     public void printContacts(){
         System.out.println("Lista de contactos:");

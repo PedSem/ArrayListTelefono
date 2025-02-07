@@ -16,7 +16,7 @@ public class MainTelefonoMovil {
                 System.out.print("Escoge una opcion:");
                 opcion= scanner.nextInt();
                 scanner.nextLine();
-                if(opcion>=0 && opcion<7){
+                if(opcion>=0 && opcion<12){
                     continuar=true;
                 }else{
                     System.out.println("Introduce una opcion valida");
@@ -48,6 +48,9 @@ public class MainTelefonoMovil {
                 case 6:
                     imprimirmenu();
                     break;
+                case 7:
+                    EncontrarContactoTelefono();
+                    break;
             }
 
         }while ((opcion<0 || opcion>7) || continuar);
@@ -60,6 +63,7 @@ public class MainTelefonoMovil {
         System.out.println("4- Eliminar contacto");
         System.out.println("5- Encontrar nombre del contacto");
         System.out.println("6- Imprimir menu");
+        System.out.println("7-Encontrar numero de telefono del contacto");
     }
     public static void AnyadirConacto(){
         String nombre="";
@@ -247,6 +251,35 @@ public class MainTelefonoMovil {
             System.out.println("No se encontro el contacto");
         }
 
+    }
+    //7.Busqueda por telefono
+    //8.Ordenar por nombre
+    //9.Borrar todo
+    //10.Numero de contactos
+    //11.Busqueda por clave
+    public static void EncontrarContactoTelefono(){
+        String numerotelefono="";
+        boolean continuar=false;
+        do{
+            try{
+                System.out.print("Introduce el nuevo numero de telefono:");
+                numerotelefono= String.valueOf(scanner.nextInt());
+                if (numerotelefono.length()==9){
+                    continuar=true;
+                }else{
+                    System.out.println("Error.Introduce un numero valido");
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Solo se permiten numeros");
+                scanner.nextLine();
+            }
+        }while (!continuar);
+        Contacto contactoencontrar=telefonoMovil.queryContactTelefono(numerotelefono);
+        if(contactoencontrar!=null){
+            System.out.println("Contacto encontrado " + contactoencontrar.getName() + " -> " + contactoencontrar.getPhoneNumber());
+        }else{
+            System.out.println("No se encontro el contacto");
+        }
     }
 }
 
