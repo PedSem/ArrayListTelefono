@@ -122,42 +122,4 @@ public class TelefonoMovil {
         }
         System.out.println("Hay " + contarcontactos + " contactos");
     }
-    public void Encontrarclave(){
-        Scanner scanner=new Scanner(System.in);
-        boolean continuar=false;
-
-        do{
-            try{
-                System.out.println("Introduce la clave que quieres obtener");
-                String clave= scanner.nextLine().toLowerCase();
-                boolean esvalido=true;
-                for(int i=0;i<clave.length();i++){
-                    if(!Character.isLetter(clave.charAt(i))){
-                        esvalido=false;
-                    }
-                }
-                if(esvalido){
-                    boolean encontrar=false;
-                    for(Contacto contacto:myContacts){
-                        if(contacto.getName().equalsIgnoreCase(clave)){
-                            System.out.println(contacto);
-                            encontrar=true;
-                            continuar=true;
-                        }
-                    }
-                    if(!encontrar){
-                        System.out.println("Introduce una clave valida");
-                    }
-                }else{
-                    System.out.println("Error.Solo se permiten caracteres");
-                }
-            }catch (NumberFormatException e){
-                System.out.println("Error.Pon solo caracteres");
-            }
-        }while (!continuar);
-
-
-
-
-    }
 }
