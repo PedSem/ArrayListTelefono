@@ -11,23 +11,28 @@ public class MainTelefonoMovil {
 
     public static void main(String[] args) {
         Scanner scanner=new Scanner(System.in);
-        boolean continuar=false;
+        boolean continuar=true;
         int opcion=0;
+        boolean entradavalida;
         do{
             imprimirmenu();
-            try{
-                System.out.print("Escoge una opcion:");
-                opcion= scanner.nextInt();
-                scanner.nextLine();
-                if(opcion>=0 && opcion<12){
-                    continuar=true;
-                }else{
-                    System.out.println("Introduce una opcion valida");
+            do{
+                 entradavalida=false;
+                try{
+                    System.out.print("Escoge una opcion:");
+                    opcion= scanner.nextInt();
+                    scanner.nextLine();
+                    entradavalida=true;
+                    if(opcion<0 || opcion>12){
+                        entradavalida=false;
+                        System.out.println("Introduce una opcion valida");
+                    }
+                }catch (InputMismatchException e){
+                    System.out.println("Error.Debes introducir numeros");
+                    scanner.nextLine();
                 }
-            }catch (InputMismatchException e){
-                System.out.println("Error.Debes introducir numeros");
-                scanner.nextLine();
-            }
+            }while (!entradavalida);
+
             switch (opcion){
                 case 0:
                     System.out.println("Has salido con exito");
@@ -68,7 +73,7 @@ public class MainTelefonoMovil {
                     break;
             }
 
-        }while ((opcion<0 || opcion>12) || continuar);
+        }while (continuar);
     }
     public static void imprimirmenu(){
         System.out.println("0-Salir");
@@ -320,7 +325,7 @@ public class MainTelefonoMovil {
         }while (!continuar);
         Contacto clavecontacto=telefonoMovil.queryContact(clave);
         if(clavecontacto!=null){
-            System.out.println("Contacto " + clavecontacto.getName() + " -> " + clavecontacto.getPhoneNumber());
+            System.out.println("Telefono encontrado -> "  + clavecontacto.getPhoneNumber());
         }else{
             System.out.println("No se encontro el contacto");
         }
